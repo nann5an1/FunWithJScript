@@ -22,14 +22,17 @@ body{
     align-items: center;
     grid-template-columns: 1fr;
     margin: 10vh 20vw 5vh 38vw;
+    border-radius: 1rem;
 }
 #in-out-panel{
-    width: 20vw;
+    width: 19.5vw;
     height: 15vh;
-    /* padding-top: 1rem; */
-    /* margin: 1rem 1rem 1rem 1rem; */
+    border-radius: 1.5rem;
+    font-size: 2.5rem;
+    color: rgb(32, 32, 32);
+    text-align: right;
     margin: 1rem;
-    background-color: rgb(255, 163, 50);
+    background-color: rgba(255, 255, 255, 0.971);
 }
 
 .btn-panel{
@@ -46,15 +49,17 @@ body{
 .btn{
     width: 4vw;
     height: 8vh;
-    margin-right: 3%;
-    /* padding: 1rem; */
+    margin-right: 2.5%;
+    align-items: center;
     border-radius: 100px;
-    background-color: rgb(199, 199, 199);
+    background-color: rgba(220, 220, 220, 0.649);
     border-style: none;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    /* align-content: center; */
     font-size: 1.1rem;
+}
+.opt{
+    background-color: rgb(255, 138, 21);
 }
 
 span{
@@ -65,5 +70,4 @@ span{
     width: 1.8vw;
     height: 3.5vh;
     padding: 1rem;
-    /* background-color: white; */
 }
