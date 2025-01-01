@@ -1,5 +1,6 @@
 *{
     background-color: rgb(230, 246, 255);
+    margin: 0%;
 }
 .main-bg{
     background-color: rgba(157, 216, 255, 0.852);
@@ -68,6 +69,16 @@
     margin-top: 2rem;
 }
 #output-div{
-    padding: 1rem;
-    background-color: black;
+    background-color: transparent;
 }
+
+/*why??*/
+/* p{
+    list-style-type: lower-greek;
+    color: rgb(0, 19, 59);
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 1.7rem;
+    background-color: transparent;
+    padding-top: 0.5rem;
+} */
