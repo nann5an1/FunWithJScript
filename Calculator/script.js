@@ -1,11 +1,17 @@
 
 const btns = document.querySelectorAll(".btn");
-const digitsReg = /^\d+$/;
+// const digitsReg = /^\d+$/;
 const inoutPanel = document.querySelector("#in-out-panel");
 let digitString = "";
 
 
 inoutPanel.innerHTML = "0";
+
+function eventClick(event, btn)
+{
+    if(event.key == btn.value)
+        checkValue(btn.value);
+}
 function checkValue(value){
     if(value == "AC"){
         inoutPanel.innerHTML = "0";
@@ -25,8 +31,11 @@ function checkValue(value){
 }
 
 for (const btn of btns) {
+    document.addEventListener('keydown', () => eventClick(event, btn));
     btn.addEventListener('click', () => checkValue(btn.value));
+   
 }
+
 
 // let digitsArray = [];
 // let optArray = [];
