@@ -1,0 +1,73 @@
+*{
+    background-color: rgb(230, 246, 255);
+}
+.main-bg{
+    background-color: rgba(157, 216, 255, 0.852);
+    width: 30vw;
+    height:90vh;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin: 7vh 20vw 5vh 38vw;
+    border-radius: 1rem;
+
+}
+#bg-fieldset{
+    background-color: rgb(216, 234, 255);
+    width: 20vw;
+    height:80vh;
+    border-radius: 1rem;
+    border-color: rgb(137, 150, 193);
+    border-style: none;
+    color: rgb(49, 21, 21);
+    padding: 1rem 2rem 1rem 2rem;
+  
+}
+#input{
+    display: grid;
+    background-color: rgb(216, 234, 255);
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 1rem;
+    padding: 0.1rem;
+    /* margin: 1rem; */
+}
+#output{
+    background-color: black;
+}
+.btn{
+    width: 4rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+    border-style: none;
+    color: rgb(7, 7, 7);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    font-variant: all-small-caps;
+    &.add{
+        background-color: rgb(32, 218, 131);
+        color: rgb(0, 97, 52);
+    }
+    &.del{
+        background-color: rgb(235, 65, 42);
+        color: rgb(98, 13, 2);;
+    }
+}
+#input-text{
+    border-color: rgb(123, 204, 255);
+    border-block-style: groove;
+    border-radius: 0.2rem;
+    width: 14rem;
+}
+#output-fieldset{
+    background-color: rgb(188, 217, 251);
+    width: 23vw;
+    height:64vh;
+    border-style: none;
+    border-radius: 1rem;
+    margin-top: 2rem;
+}
+#output-div{
+    padding: 1rem;
+    background-color: black;
+}
