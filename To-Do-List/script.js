@@ -6,23 +6,32 @@ let taskCount = 0;
 let array = [];
 
 
+
 // function testFunc(){
 //     alert("clicked");
 // }
 function addToList(textVal){
-    array.push(textVal);
     let child = document.createElement("li");
     child.style.color = "rgb(0, 19, 59)";
     child.style.fontSize = "1.7rem";
     child.style.fontVariant = "small-caps";
     child.textContent = textVal; //either .innerText or .textContent
     child.style.backgroundColor = "transparent";
+    array.push(textVal);
     parent.appendChild(child);
+
+    child.addEventListener('click', () => { //select on the task
+        child.style.backgroundColor = "yellow";
+        let arrayIndex = array.indexOf(textVal);
+        alert(arrayIndex);
+    });
+
 }
 
-function delFromList(){
-    alert("select the item first");
-}
+// function delFromList(){
+//     const removedNode = parent.removeChild(child);
+//     alert(removedNode.value);
+// }
 
 function handleKeyEnter(event){
     if(event.key == "Enter")
