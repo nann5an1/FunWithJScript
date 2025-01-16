@@ -1,0 +1,1 @@
+https://datamall2.mytransport.sg/ltaodataservice/v3/BusArrival?BusStopCode=47619
