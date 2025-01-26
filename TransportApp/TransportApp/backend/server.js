@@ -33,7 +33,7 @@ app.get('/api/data/:busStopCode', async (req, res) => {
                 Accept: 'application/json',
             },
         });
-        console.log(response.data);
+        // console.log(response.data);
         res.json(response.data); // Send the response data to the frontend
     } catch (error) {
         // Log detailed error information for debugging
@@ -52,6 +52,52 @@ app.get('/api/data/:busStopCode', async (req, res) => {
     }
 });
 
+
+app.get('/api/route/:busNumber', async (req, res) => {
+    console.log("getting data");
+    let i = 0;
+    let found = 1;
+    const busNumber = req.params.busNumber;
+    console.log(`bus in backend ${busNumber}`);
+
+    console.log(!found);
+    // while(!found)
+    // {
+        let j = 0;
+        const apiURL = `${GENERAL_API}/BusRoutes?$skip=${i}`;
+        console.log(apiURL);
+        try {
+            const response = await axios.get(apiURL, {
+                headers: {
+                    AccountKey: APIKey,
+                    Accept: 'application/json',
+                },
+            });
+            console.log(response.status);
+            // if(response.ok)
+            // {
+                console.log(`searched bus ${busNumber} found`);
+                console.log(response.data.value[j].ServiceNo);
+                while(response.data.value[j].ServiceNo == busNumber)
+                {
+                    console.log(response.data.value[j]);
+                    j++;
+                    // found = 1;
+                    // console.log(`searched bus ${busNumber} found`);
+                }
+                // if(found)
+                //     break;
+                // else
+                    // i += 500;
+            // }
+            // res.json(response.data);
+        } catch (error) {
+            console.log(error.message);
+            
+        }
+    // }
+    
+});
 
 
 app.listen(PORT, () => {

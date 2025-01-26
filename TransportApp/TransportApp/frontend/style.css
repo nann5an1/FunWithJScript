@@ -6,11 +6,17 @@
   padding: 0%;
   margin: 0%;
 }
-
-.main-bg {
-  background-color: rgb(32, 32, 32);
+.main-container{
   display: flex;
   justify-content: center;
+}
+
+.main-bg {
+  background-color: rgba(44, 2, 77, 0.984);
+  display: flex;
+  justify-content: center;
+  width: 35rem;
+  height: 100vh;
 }
 
 #panel-bg {
@@ -20,11 +26,11 @@
 #panel-input {
   display: flex;
   justify-content: center;
-  background-color: rgb(252, 188, 70);
+  background-color: rgb(100, 64, 158);
   column-gap: 8rem;
   padding: 1rem 1rem 2rem 1rem;
   margin-bottom: 1rem;
-  margin-top: 3rem;
+  margin-top: 1rem;
   border-radius: var(--radius-border);
 }
 
@@ -43,13 +49,15 @@
 }
 
 #panel-output {
-  background-color: rgba(255, 248, 186, 0.913);
-  height: 31rem;
+  background-color: rgba(255, 254, 246, 0.932);
+  height: 35rem;
   border-radius: var(--radius-border);
   overflow-y: scroll;
 }
 
 .bus-output-panel {
+  background-color: rgba(217, 216, 221, 0.822);
+  margin: 0.5rem;
   padding: 1rem;
   display: none;
   max-width: 35rem;
@@ -58,13 +66,13 @@
 .brief-panel {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  background-color: rgb(252, 188, 70);
+  background-color: rgba(132, 209, 7, 0.918);
   padding: 1rem;
   border-radius: var(--radius-border);
 }
 
 #bus-details {
-  background-color: rgba(255, 248, 186, 0.913);
+  background-color: rgba(186, 250, 125, 0.658);
   border-radius: var(--radius-border);
   border-style: none;
 }
@@ -88,10 +96,10 @@
 }
 
 .additional-details {
-  background-color: rgba(125, 202, 0, 0.881);
+  background-color: rgba(255, 196, 68, 0.884);
   padding: 0.5rem;
   margin-top: 0.5rem;
-  border-radius: var(--radius-border);
+  border-radius: var(--radius-border);;
 }
 
 .time-panel {

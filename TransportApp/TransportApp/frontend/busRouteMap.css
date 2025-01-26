@@ -1,0 +1,6 @@
+#bus-num-panel, #route-map-panel, #first-last-bus-timing-panel{
+    padding: 2rem;
+    margin-top: 2rem;
+    background-color: blanchedalmond;
+    width: 25rem;
+}

@@ -6,20 +6,21 @@ const template = document.querySelector(".bus-output-panel");
 let currentDate = new Date();
 let currentMin = currentDate.getMinutes();
 
+
+
 async function getData(busStopCode){
     try
     {
+        outPanel.innerHTML = "";
         const apiURL = `http://localhost:3000/api/data/${busStopCode}`; // Backend endpoint
         const response = await fetch(apiURL);
-		console.log(response);
         if(response.ok)
         {
-			// console.log("hello");
             const data = await response.json();
 			// console.log(data);
             if (data.Services) {
                 const count = data.Services.length;
-                // console.log(count);
+                console.log(count);
                 //loop for the bus number 
                 for(let j = 0; j < count; j++)
                 {
@@ -29,7 +30,8 @@ async function getData(busStopCode){
                     const busDetailsBtn = clone.querySelector("#bus-details");
                     clone.style.display = "block";
                     busNum.innerHTML = `Bus ${busNumber}`;
-                    busDetailsBtn.addEventListener("click", () => getBusDetails());
+                    // console.log(`Bus number is : ${busNumber}`);
+                    busDetailsBtn.addEventListener("click", () => getBusDetails(busNumber));
                     for(let i = 0; i < 3; i++) //looping for the detailed feature of the bus
                     {
                         const key = i === 0 ? "NextBus" : `NextBus${i + 1}`;
@@ -54,8 +56,39 @@ async function getData(busStopCode){
     }
 }
 
+
+async function getBusDetails(busNumber){
+    console.log(`Bus number is : ${busNumber}`);
+    // for(let i = 0; i <= 500; i += 500)
+    // {
+    //     console.log(i);
+        const apiURL = `http://localhost:3000/api/route/${busNumber}`;
+        // console.log(apiURL);
+        try {
+            // console.log(`i in try: ${i}`);
+            const response = await fetch(apiURL);
+            console.log(response.message);
+            console.log(apiURL);
+            if(response.ok)
+            {
+                const data = await response.json();
+                console.log(data);
+                console.log(`Bus number is : ${busNumber} again`); 
+                if(busNumber == data.value.ServiceNo)
+                {
+                    console.log(data.value.ServiceNo);
+                    // break;
+                }
+                // else
+                //     continue;  
+            }
+    } catch (error) {
+        console.log(`frontend: ${error.message}`);
+    }
+    // }
+}
+
 searchBtn.addEventListener("click", () => getData(inputText.value));
-// busDetailsBtn.addEventListener("click", () => getBusDetails());
 
 
 
