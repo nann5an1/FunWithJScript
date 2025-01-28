@@ -59,33 +59,20 @@ async function getData(busStopCode){
 
 async function getBusDetails(busNumber){
     console.log(`Bus number is : ${busNumber}`);
-    // for(let i = 0; i <= 500; i += 500)
-    // {
-    //     console.log(i);
-        const apiURL = `http://localhost:3000/api/route/${busNumber}`;
-        // console.log(apiURL);
-        try {
-            // console.log(`i in try: ${i}`);
-            const response = await fetch(apiURL);
-            console.log(response.message);
-            console.log(apiURL);
-            if(response.ok)
-            {
-                const data = await response.json();
-                console.log(data);
-                console.log(`Bus number is : ${busNumber} again`); 
-                if(busNumber == data.value.ServiceNo)
-                {
-                    console.log(data.value.ServiceNo);
-                    // break;
-                }
-                // else
-                //     continue;  
-            }
+    const apiURL = `http://localhost:3000/api/route/${busNumber}`;
+    console.log(`Front end api print : ${apiURL}`);
+    try {
+        const response = await fetch(apiURL);
+        console.log(`After fetching : ${apiURL}`);
+        if(response.ok)
+        {
+            const data = await response.json();
+            console.log(data);
+            console.log(data.value.ServiceNo);
+        }
     } catch (error) {
         console.log(`frontend: ${error.message}`);
     }
-    // }
 }
 
 searchBtn.addEventListener("click", () => getData(inputText.value));

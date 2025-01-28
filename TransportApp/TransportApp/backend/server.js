@@ -34,6 +34,7 @@ app.get('/api/data/:busStopCode', async (req, res) => {
             },
         });
         // console.log(response.data);
+        // console.log(res.json(response.data));
         res.json(response.data); // Send the response data to the frontend
     } catch (error) {
         // Log detailed error information for debugging
@@ -56,13 +57,13 @@ app.get('/api/data/:busStopCode', async (req, res) => {
 app.get('/api/route/:busNumber', async (req, res) => {
     console.log("getting data");
     let i = 0;
-    let found = 1;
+    let found = 0;
+    let busStopArray = [];
     const busNumber = req.params.busNumber;
     console.log(`bus in backend ${busNumber}`);
 
-    console.log(!found);
-    // while(!found)
-    // {
+    while(found == 0)
+    {
         let j = 0;
         const apiURL = `${GENERAL_API}/BusRoutes?$skip=${i}`;
         console.log(apiURL);
@@ -73,30 +74,38 @@ app.get('/api/route/:busNumber', async (req, res) => {
                     Accept: 'application/json',
                 },
             });
-            console.log(response.status);
-            // if(response.ok)
-            // {
-                console.log(`searched bus ${busNumber} found`);
-                console.log(response.data.value[j].ServiceNo);
-                while(response.data.value[j].ServiceNo == busNumber)
+            // console.log(response.status);
+            // console.log(response.data.value[j].ServiceNo);
+            let length = response.data.value.length;
+            console.log(`value length in data: ${length}`);
+            for(let k = 0; k < length; k++)
+            {
+                if(response.data.value[k].ServiceNo == busNumber)
                 {
-                    console.log(response.data.value[j]);
-                    j++;
-                    // found = 1;
-                    // console.log(`searched bus ${busNumber} found`);
+                    // console.log(response.data.value[k].ServiceNo);
+                    busStopArray.push(response.data.value[k].BusStopCode);
+                    found = 1;
                 }
-                // if(found)
-                //     break;
-                // else
-                    // i += 500;
-            // }
-            // res.json(response.data);
+                k++;
+            }
+            if(found == 1 && busStopArray.length > 0)
+            {
+                console.log(`Bus stop array: ${busStopArray}`);
+                console.log(JSON.stringify(busStopArray));
+                break;
+            }
+            else
+                i += 500;
         } catch (error) {
             console.log(error.message);
             
         }
-    // }
-    
+    }
+    if(busStopArray.length > 0)
+        res.json(JSON.stringify(busStopArray));
+        // console.log(res.json(JSON.stringify(busStopArray)))
+        
+
 });
 
 
