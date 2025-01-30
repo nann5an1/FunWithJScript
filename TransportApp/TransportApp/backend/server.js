@@ -57,16 +57,18 @@ app.get('/api/data/:busStopCode', async (req, res) => {
 app.get('/api/route/:busNumber', async (req, res) => {
     console.log("getting data");
     let i = 0;
+    let stopsIterate = 0;
+    let busStopFound = 0;
     let found = 0;
     let busStopArray = [];
+    let coordinates = [];
     const busNumber = req.params.busNumber;
     console.log(`bus in backend ${busNumber}`);
 
     while(found == 0)
     {
-        let j = 0;
         const apiURL = `${GENERAL_API}/BusRoutes?$skip=${i}`;
-        console.log(apiURL);
+        // console.log(apiURL);
         try {
             const response = await axios.get(apiURL, {
                 headers: {
@@ -74,10 +76,7 @@ app.get('/api/route/:busNumber', async (req, res) => {
                     Accept: 'application/json',
                 },
             });
-            // console.log(response.status);
-            // console.log(response.data.value[j].ServiceNo);
             let length = response.data.value.length;
-            // console.log(`value length in data: ${length}`);
             for(let k = 0; k < length; k++)
             {
                 if(response.data.value[k].ServiceNo == busNumber)
@@ -88,26 +87,64 @@ app.get('/api/route/:busNumber', async (req, res) => {
                 }
             }
             if(found == 1 && busStopArray.length > 0)
-            {
-                console.log(`Bus stop array: ${busStopArray}`);
-                // console.log(JSON.stringify(busStopArray));
                 break;
-            }
             else
                 i += 500;
         } catch (error) {
             console.log(error.message);
-            
         }
     }
-    if(busStopArray.length > 0)
-        res.json(busStopArray);
-        // console.log(res.json(JSON.stringify(busStopArray)))
-        
-
+    console.log("start of searching bus cooridnates");
+    while(busStopFound == 0)
+    {
+        const api = `${GENERAL_API}/BusStops?$skip${stopsIterate}`;
+        const response = await axios.get(api, {
+            headers: {
+                AccountKey: APIKey,
+                Accept: 'application/json',
+            },
+        });
+        for(let i = 0; i < busStopArray.length; i++) //iterate the array
+        {
+            for(let j = 0; j < response.data.value.length; j++) //iterate the 500 lines of dataset
+            {
+                if(busStopArray[i] == response.data.value[j].BusStopCode){
+                    let name = response.data.value[j].Description;
+                    let lat = response.data.value[j].Latitude;
+                    let long = response.data.value[j].Longitude;
+                    let obj = {name, lat, long};
+                    coordinates.push(obj);
+                    busStopFound = 1;
+                }
+            }
+        }
+        if((i == busStopArray.length - 1) && busStopFound == 1)
+            break;
+        else
+            stopsIterate += 500;
+    }
+    console.log(coordinates);
+    res.json(coordinates);
+    console.log("data fetching ended");
 });
 
 
 app.listen(PORT, () => {
     console.log(`Backend server running on port ${PORT}`);
 });
+
+
+// const currentStops = response.data.value;
+// if(currentStops.length == 0) break;
+
+// currentStops.forEach(stop => {
+//     if(busStopArray.includes(stop.BusStopCode)){
+//         coordinates.push({
+//             name : stop.Description,
+//             lat : stop.Latitude,
+//             long : stop.Longitude
+//         })
+//         foundBusStops.add(stop.BusStopCode);
+//     }
+// });
+// stopsIterate += 500

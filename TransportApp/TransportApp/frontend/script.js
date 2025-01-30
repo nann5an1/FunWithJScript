@@ -67,22 +67,18 @@ async function getData(busStopCode){
 }
 
 async function getBusDetails(busNumber) {
-    console.log(`🚌 Starting getBusDetails for bus: ${busNumber}`);
-    const apiURL = `http://localhost:3000/api/route/${busNumber}`;
-    console.log(`📡 Requesting: ${apiURL}`);
-    
-   // Test 1: Check if the getData endpoint is accessible
-    console.log("🔄 Testing getData endpoint first...");
     try {
-        const testResponse = await fetch(apiURL);
-        if (!testResponse.ok) {
-            console.error("❌ getData test failed with status:", testResponse.status);
-            throw new Error(`Test failed: ${testResponse.status}`);
-        }
-        console.log("✅ getData test successful");
+        const response = await fetch(`http://localhost:3000/api/route/${busNumber}`);
+        if (!response.ok) throw new Error("Failed to fetch data");
+        const data = await response.json();
+        console.log("Bus stop coordinates:", data);
+        // Example response:
+        // [
+        //   { busStopCode: "01012", latitude: 1.29685, longitude: 103.853, description: "Hotel Grand Pacific" },
+        //   ...
+        // ]
     } catch (error) {
-        console.error("❌ getData test error:", error);
-        throw error; // Re-throw to stop further execution
+        console.error("Error:", error);
     }
 }
 
