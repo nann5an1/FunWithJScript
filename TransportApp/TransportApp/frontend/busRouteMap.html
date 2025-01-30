@@ -5,19 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="busRouteMap.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""/>
+    <title>Bus Route Map</title>
+    <style>
+        #map { height: 25rem; }
+    </style>
 </head>
 <body>
     <div class="main-container">
         <div class="main-bg">
             <div id="panel-bg">
-                
-                    <div id="bus-num-panel">965</div>
-                    <div id="route-map-panel">route</div>
-                    <div id="first-last-bus-timing-panel">fist bus: 6am</div>
-              
+                <div id="bus-num-panel">965</div>
+                <div id="map"></div>
+                <div id="first-last-bus-timing-panel">First bus: 6 AM</div>
             </div>
         </div>
     </div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin="">
+    </script>
+    <script>
+        var map = L.map('map').setView([1.3521, 103.8198], 13);
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    var circle = L.circle([1.3521, 103.8198], {
+    color: 'red',
+    fillColor: '#f03',
+    fillOpacity: 0.5,
+    radius: 200
+    }).addTo(map);
+
+    </script>
 </body>
 </html>

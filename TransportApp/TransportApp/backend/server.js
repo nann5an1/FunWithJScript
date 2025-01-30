@@ -77,7 +77,7 @@ app.get('/api/route/:busNumber', async (req, res) => {
             // console.log(response.status);
             // console.log(response.data.value[j].ServiceNo);
             let length = response.data.value.length;
-            console.log(`value length in data: ${length}`);
+            // console.log(`value length in data: ${length}`);
             for(let k = 0; k < length; k++)
             {
                 if(response.data.value[k].ServiceNo == busNumber)
@@ -86,12 +86,11 @@ app.get('/api/route/:busNumber', async (req, res) => {
                     busStopArray.push(response.data.value[k].BusStopCode);
                     found = 1;
                 }
-                k++;
             }
             if(found == 1 && busStopArray.length > 0)
             {
                 console.log(`Bus stop array: ${busStopArray}`);
-                console.log(JSON.stringify(busStopArray));
+                // console.log(JSON.stringify(busStopArray));
                 break;
             }
             else
@@ -102,7 +101,7 @@ app.get('/api/route/:busNumber', async (req, res) => {
         }
     }
     if(busStopArray.length > 0)
-        res.json(JSON.stringify(busStopArray));
+        res.json(busStopArray);
         // console.log(res.json(JSON.stringify(busStopArray)))
         
 

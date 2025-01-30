@@ -31,7 +31,17 @@ async function getData(busStopCode){
                     clone.style.display = "block";
                     busNum.innerHTML = `Bus ${busNumber}`;
                     // console.log(`Bus number is : ${busNumber}`);
-                    busDetailsBtn.addEventListener("click", () => getBusDetails(busNumber));
+                    // busDetailsBtn.addEventListener("click", async () => await getBusDetails(busNumber));
+                    busDetailsBtn.addEventListener("click", async () => {
+                        console.log("🖱️ Button clicked");
+                        try {
+                            console.log(`🚌 Calling getBusDetails for bus ${busNumber}`);
+                            const result = await getBusDetails(busNumber);
+                            console.log("✅ getBusDetails completed:", result);
+                        } catch (error) {
+                            console.error("❌ Click handler error:", error);
+                        }
+                    });
                     for(let i = 0; i < 3; i++) //looping for the detailed feature of the bus
                     {
                         const key = i === 0 ? "NextBus" : `NextBus${i + 1}`;
@@ -56,22 +66,23 @@ async function getData(busStopCode){
     }
 }
 
-
-async function getBusDetails(busNumber){
-    console.log(`Bus number is : ${busNumber}`);
+async function getBusDetails(busNumber) {
+    console.log(`🚌 Starting getBusDetails for bus: ${busNumber}`);
     const apiURL = `http://localhost:3000/api/route/${busNumber}`;
-    console.log(`Front end api print : ${apiURL}`);
+    console.log(`📡 Requesting: ${apiURL}`);
+    
+   // Test 1: Check if the getData endpoint is accessible
+    console.log("🔄 Testing getData endpoint first...");
     try {
-        const response = await fetch(apiURL);
-        console.log(`After fetching : ${apiURL}`);
-        if(response.ok)
-        {
-            const data = await response.json();
-            console.log(data);
-            console.log(data.value.ServiceNo);
+        const testResponse = await fetch(apiURL);
+        if (!testResponse.ok) {
+            console.error("❌ getData test failed with status:", testResponse.status);
+            throw new Error(`Test failed: ${testResponse.status}`);
         }
+        console.log("✅ getData test successful");
     } catch (error) {
-        console.log(`frontend: ${error.message}`);
+        console.error("❌ getData test error:", error);
+        throw error; // Re-throw to stop further execution
     }
 }
 
