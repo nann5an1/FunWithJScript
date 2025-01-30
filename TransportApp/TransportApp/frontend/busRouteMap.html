@@ -21,21 +21,6 @@
     </div>
     <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
-    <script>
-        var map = L.map('map');
-
-    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    L.Routing.control({
-        waypoints: [
-            L.latLng(1.3128447, 103.85989),
-            L.latLng(1.30965, 103.857371),
-            L.latLng(1.31313, 103.85635),
-            L.latLng(1.314966, 103.857819)
-        ]
-    }).addTo(map);
-      </script>
+    <script src="getMap.js"></script>
 </body>
 </html>

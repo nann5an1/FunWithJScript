@@ -68,7 +68,6 @@ app.get('/api/route/:busNumber', async (req, res) => {
     while(found == 0)
     {
         const apiURL = `${GENERAL_API}/BusRoutes?$skip=${i}`;
-        // console.log(apiURL);
         try {
             const response = await axios.get(apiURL, {
                 headers: {
@@ -97,36 +96,43 @@ app.get('/api/route/:busNumber', async (req, res) => {
     console.log("start of searching bus cooridnates");
     while(busStopFound == 0)
     {
-        const api = `${GENERAL_API}/BusStops?$skip${stopsIterate}`;
-        const response = await axios.get(api, {
-            headers: {
-                AccountKey: APIKey,
-                Accept: 'application/json',
-            },
-        });
-        for(let i = 0; i < busStopArray.length; i++) //iterate the array
-        {
-            for(let j = 0; j < response.data.value.length; j++) //iterate the 500 lines of dataset
+        try {
+            const api = `${GENERAL_API}/BusStops?$skip=${stopsIterate}`;
+            const response = await axios.get(api, {
+                headers: {
+                    AccountKey: APIKey,
+                    Accept: 'application/json',
+                },
+            });
+            for(let i = 0; i < busStopArray.length; i++) //iterate the array
             {
-                if(busStopArray[i] == response.data.value[j].BusStopCode){
-                    let name = response.data.value[j].Description;
-                    let lat = response.data.value[j].Latitude;
-                    let long = response.data.value[j].Longitude;
-                    let obj = {name, lat, long};
-                    coordinates.push(obj);
-                    busStopFound = 1;
+                for(let j = 0; j < response.data.value.length; j++) //iterate the 500 lines of dataset
+                {
+                    if(busStopArray[i] == response.data.value[j].BusStopCode){
+                        let name = response.data.value[j].Description;
+                        let lat = response.data.value[j].Latitude;
+                        let long = response.data.value[j].Longitude;
+                        let obj = {name, lat, long};
+                        coordinates.push(obj);
+                        busStopFound = 1;
+                    }
                 }
             }
+            if((i == busStopArray.length - 1) && busStopFound == 1)
+                break;
+            else
+                stopsIterate += 500;
+            console.log(coordinates);
+            console.log("data fetching ended");
         }
-        if((i == busStopArray.length - 1) && busStopFound == 1)
-            break;
-        else
-            stopsIterate += 500;
+        catch (error) {
+            Console.log(error.message);
+        }
     }
-    console.log(coordinates);
     res.json(coordinates);
-    console.log("data fetching ended");
-});
+}
+
+);
 
 
 app.listen(PORT, () => {
