@@ -3,6 +3,7 @@
   position: fixed;
   z-index: 1;
   margin-top: 2rem;
+  margin-left: 1rem;
   overflow-x: hidden;
   transition: 0.5s;
 }
@@ -13,6 +14,6 @@
 
 .account-div {
   display: grid;
-  row-gap: 1rem;
+  row-gap: 0.5rem;
   width: 10rem;
 }/*# sourceMappingURL=navbar.css.map */

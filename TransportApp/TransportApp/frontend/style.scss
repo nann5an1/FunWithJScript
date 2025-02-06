@@ -55,19 +55,10 @@
 
   #page-nav{
     background-image: url('img/menu-burger.svg');
+    margin-left: 1rem;
     @include setting-btn-std;
   }
 
-  #setting-div{
-    padding: 2rem;
-    display: flex;
-    justify-content: center;
-  }
-  
-  #setting{
-    background-image: url('img/settings.svg');
-    @include setting-btn-std;
-  }
 
   #panel-input {
     @include flex-std;
@@ -94,7 +85,7 @@
   
   #panel-output {
     background-color: rgba(255, 254, 246, 0.932);
-    height: 35rem;
+    height: 40rem;
     border-radius: var(--radius-border);
     overflow-y: scroll;
   }
@@ -104,7 +95,6 @@
     margin: 0.5rem;
     padding: 1rem;
     display: none;
-    max-width: 35rem;
   }
   
   .brief-panel {
@@ -121,9 +111,6 @@
     border-style: none;
   }
   
-  .dest-code {
-    margin-left: 2rem;
-  }
   
   .bus-num-panel {
     display: grid;
@@ -135,7 +122,7 @@
   
   .details-panel {
     @include grid-std;
-    column-gap: 0.5rem;
+    column-gap: 0.4rem;
   }
   
   .additional-details {
@@ -152,4 +139,74 @@
   .capacity-panel {
     @include grid-std;
     column-gap: 0.2rem;
+  }
+
+
+  @media screen and (max-width: 450px) and (max-height: 950px) {
+    .main-bg{
+      width: 27rem;
+      height: 100vh;
+    }
+    #panel-input{
+      width: 27rem;
+      column-gap: 4rem;
+    }
+    #panel-output{
+      height: 35rem;
+
+    }
+
+    #input-text{
+      width: 12rem;
+      height: 2rem;
+    }
+    #search-btn {
+      width: 4rem;
+      height: 2rem;
+    }
+    .additional-details {
+      font-size: smaller;
+    }
+    #bus-details {
+     font-size: smaller;
+    }
+    .brief-panel {
+      width: 24rem;
+    }
+      
+
+  }
+
+  @media screen and (max-width: 400px) and (max-height: 860px) {
+    .main-bg{
+      width: 25rem;
+      height: 100vh;
+    }
+    #page-nav{
+      margin-left: 2rem;
+    }
+    #panel-input{
+      width: 24rem;
+      column-gap: 4rem;
+    }
+    #panel-output{
+      height: 35rem;
+    }
+    #input-text{
+      width: 12rem;
+      height: 2rem;
+    }
+    #search-btn {
+      width: 4rem;
+      height: 2rem;
+    }
+    .additional-details {
+      font-size: smaller;
+    }
+    #bus-details {
+     font-size: smaller;
+    }
+    .brief-panel {
+      width: 22rem;
+    }
   }
