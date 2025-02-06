@@ -1,0 +1,21 @@
+#sidebar-panel{
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    margin-top: 2rem;
+    // background-color: #161616d1;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+
+.pages-div
+{
+   width: 10rem;
+}
+
+.account-div{
+    display: grid;
+    row-gap: 1rem;
+    width: 10rem;
+}

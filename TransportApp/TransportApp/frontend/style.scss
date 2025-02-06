@@ -22,99 +22,134 @@
     border-style: none;
 }
 
+@mixin setting-btn-std{
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0.8rem;
+    @include btn-std;
+}
+
 *{
     padding: 0%;
     margin: 0%;
 }
 
-.main-bg{
-    background-color: rgb(32, 32, 32);
-    @include flex-std;
-}
-
-#panel-bg{
+.main-container{
+    display: flex;
+    justify-content: center;
+  }
+  
+  .main-bg {
+    background-color: rgba(44, 2, 77, 0.984);
+    display: flex;
+    justify-content: center;
+    width: 35rem;
     height: 100vh;
-}
+  }
+  
+  #panel-bg {
+    height: 100vh;
+  }
 
-#panel-input{
+  #page-nav{
+    background-image: url('img/menu-burger.svg');
+    @include setting-btn-std;
+  }
+
+  #setting-div{
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+  }
+  
+  #setting{
+    background-image: url('img/settings.svg');
+    @include setting-btn-std;
+  }
+
+  #panel-input {
     @include flex-std;
-    background-color: rgb(252, 188, 70);
+    background-color: rgb(100, 64, 158);
     column-gap: 8rem;
     padding: 1rem 1rem 2rem 1rem;
-    margin-bottom : 1rem;
-    margin-top: 3rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
     border-radius: var(--radius-border);
-}
-
-#input-text{
+  }
+  
+  #input-text {
     width: 18rem;
     height: 2.5rem;
     border-radius: var(--radius-border);
     border-style: none;
-}
-
-#search-btn{
+  }
+  
+  #search-btn {
     width: 5rem;
     height: 3rem;
     @include btn-std;
-}
-
-#panel-output{
-    background-color: rgba(255, 248, 186, 0.913);
-    height: 31rem;
+  }
+  
+  #panel-output {
+    background-color: rgba(255, 254, 246, 0.932);
+    height: 35rem;
     border-radius: var(--radius-border);
     overflow-y: scroll;
-}
-.bus-output-panel{
+  }
+  
+  .bus-output-panel {
+    background-color: rgba(217, 216, 221, 0.822);
+    margin: 0.5rem;
     padding: 1rem;
     display: none;
     max-width: 35rem;
-    
-    // background-color: rgb(83, 176, 140);
-}
-
-.brief-panel{
+  }
+  
+  .brief-panel {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    background-color: rgb(252, 188, 70);
+    background-color: rgba(132, 209, 7, 0.918);
     padding: 1rem;
     border-radius: var(--radius-border);
-}
-
-#bus-details{
-    background-color: rgba(255, 248, 186, 0.913);
-    @include btn-std;
-}
-.dest-code{
+  }
+  
+  #bus-details {
+    background-color: rgba(186, 250, 125, 0.658);
+    border-radius: var(--radius-border);
+    border-style: none;
+  }
+  
+  .dest-code {
     margin-left: 2rem;
-    // background-color: white;
-}
-.bus-num-panel{
+  }
+  
+  .bus-num-panel {
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 0.5rem;
     font-size: larger;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
-.details-panel{
-    // background-color: red;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  }
+  
+  .details-panel {
     @include grid-std;
     column-gap: 0.5rem;
-}
-
-.additional-details{
-    background-color: rgba(125, 202, 0, 0.881);
+  }
+  
+  .additional-details {
+    background-color: rgba(255, 196, 68, 0.884);
     padding: 0.5rem;
     margin-top: 0.5rem;
-    border-radius: var(--radius-border);
-}
-
-.time-panel
-{
+    border-radius: var(--radius-border);;
+  }
+  
+  .time-panel {
     margin-bottom: 0.3rem;
-}
-.capacity-panel{
+  }
+  
+  .capacity-panel {
     @include grid-std;
     column-gap: 0.2rem;
-}
+  }

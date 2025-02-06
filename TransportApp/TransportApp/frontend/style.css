@@ -6,7 +6,8 @@
   padding: 0%;
   margin: 0%;
 }
-.main-container{
+
+.main-container {
   display: flex;
   justify-content: center;
 }
@@ -21,6 +22,34 @@
 
 #panel-bg {
   height: 100vh;
+}
+
+#page-nav {
+  background-image: url("img/menu-burger.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0.8rem;
+  border-radius: var(--radius-border);
+  border-style: none;
+}
+
+#setting-div {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+#setting {
+  background-image: url("img/settings.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0.8rem;
+  border-radius: var(--radius-border);
+  border-style: none;
 }
 
 #panel-input {
@@ -99,7 +128,7 @@
   background-color: rgba(255, 196, 68, 0.884);
   padding: 0.5rem;
   margin-top: 0.5rem;
-  border-radius: var(--radius-border);;
+  border-radius: var(--radius-border);
 }
 
 .time-panel {
