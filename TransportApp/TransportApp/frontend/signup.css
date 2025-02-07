@@ -1,0 +1,66 @@
+#sign-up-title {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  font-size: larger;
+  font-weight: 550;
+}
+
+#sign-up-panel {
+  background-color: rgba(255, 255, 255, 0.94);
+  padding: 4rem;
+  margin: 1rem;
+  border-radius: 0.2rem;
+}
+
+#signup-input-panel {
+  font-size: 15px;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.span-space {
+  padding: 2rem;
+}
+
+#sign-up-btn-div {
+  display: flex;
+  justify-content: center;
+}
+
+#sign-up-btn {
+  width: 15rem;
+}
+
+#login-redirect {
+  display: flex;
+  justify-content: center;
+}
+
+.google-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background-color: #ffffff;
+  border: 1px solid #dfdfdf;
+  border-radius: 4px;
+  color: #333333;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.google-btn img {
+  width: 30px;
+  margin-right: 10px;
+}
+
+.google-btn:hover {
+  background-color: #f1f1f1;
+}
+
+#google-btn-div {
+  display: flex;
+  justify-content: center;
+}/*# sourceMappingURL=signup.css.map */
